@@ -4,14 +4,12 @@ import { useState } from 'react';
 const useRhyddle = (solution) => {
     const [turn, setTurn] = useState(0) 
     const [currentGuess, setCurrentGuess] = useState('')
-    const [guesses, setGuesses] = useState([]) // array of formatted guesses
-    const [history, setHistory] = useState([]) // array of unformatted guesses (so no dupe guesses)
+    const [guesses, setGuesses] = useState([]) // array of both formatted and unformed guesses (latter to check for dupes)
     const [isCorrect, setIsCorrect] = useState(false)
+    const [hintsShowing, setHintsShowing] = useState([]) //empty, will fill up as user reveals hints
 
-    //guessFormatted has colours
+    //guessFormatted has colours, rn obsolete but just used to folow tutorial
     const formatGuess = (guess) => {
-        let guessFormatted = {};
-        return guessFormatted;
     }
 
     const addNewGuess = (guess) => {
@@ -21,6 +19,16 @@ const useRhyddle = (solution) => {
     //could be from pressing enter/pressing ui
     const handleSubmit = () => {
 
+    }
+
+    const handleHints = () => {
+        /* Hints: (across 10 guesses)
+            Reveal genre and description: FREE, always showing
+            Reveal artist & year: 1 hint;
+            Reveal song: 3 hints;
+            Reveal number of notes: 1 hint;
+            Last chance: leaves you with one guess left to transcribe the melody
+        */
     }
 
     return({turn,currentGuess,guesses,isCorrect})
