@@ -9,6 +9,7 @@ function InputButtons() {
         return (rest.generateButton())
     })}
     <button key = "backspace" className="NRButton" id="backspace">backspace</button>
+    <button key = "enter" className="NRButton" id="enter">enter</button>
     </>);
 }
 

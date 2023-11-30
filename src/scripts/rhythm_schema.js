@@ -28,8 +28,8 @@ function Solution(name,year,artist,genre,desc){
     }
 }
 
-function Guess(){
-    this.raw_notes = [];
+function Guess(raw_notes){
+    this.raw_notes = raw_notes;
     this.formatted_notes = [];
     this.hint_guess = false; //hint guess are blocked out for hints
     this.addNote = function(length){//notes in rhyths have pitch, notes in guess do not

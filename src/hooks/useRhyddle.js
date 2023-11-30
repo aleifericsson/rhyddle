@@ -1,19 +1,28 @@
 import { useState } from 'react';
+import { checkLength } from '../scripts/solutions';
+import { Guess } from '../scripts/rhythm_schema';
 
 //useRhyddle basically separates the logic from the ui
 const useRhyddle = (solution) => {
     const [turn, setTurn] = useState(0) 
     const [currentGuess, setCurrentGuess] = useState([])
     const [guesses, setGuesses] = useState([]) // array of both formatted and unformed guesses (latter to check for dupes)
+    const [history, setHistory] = useState([])//each guess is just an array and not an object here
     const [isCorrect, setIsCorrect] = useState(false)
     const [hintsShowing, setHintsShowing] = useState([]) //empty, will fill up as user reveals hints
 
-    //guessFormatted has colours, rn obsolete but just used to folow tutorial
-    const formatGuess = (guess) => {
-    }
-
-    const addNewGuess = (guess) => {
-
+    const addGuess = () => {
+        let temp = history;
+        temp.push(currentGuess);
+        setHistory(temp);
+        console.log(history);
+        temp = guesses;
+        const guess = new Guess(currentGuess);
+        //guess.formatGuess;
+        temp.push(guess);
+        setGuesses(temp);
+        console.log(guesses);
+        setCurrentGuess([]);
     }
 
     const handleInput = (e) => {
@@ -23,6 +32,22 @@ const useRhyddle = (solution) => {
             temp.pop(e.target.id)
             setCurrentGuess(temp);
             console.log(currentGuess);
+        }
+        else if (e.target.id === "enter"){
+            if(history.length > 9){
+                console.log("too many guesses")
+                return;
+            }
+            if ( history.includes(currentGuess)){
+                console.log("repeat guess")
+                return;
+            }
+
+            if(checkLength(currentGuess) != 8){
+                console.log("doesn't add up to 2 bars");
+                return;
+            }
+            addGuess();        
         } else{
             let temp = currentGuess;
             temp.push(e.target.id)
