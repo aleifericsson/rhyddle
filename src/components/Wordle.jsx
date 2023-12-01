@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRhyddle } from "../hooks/useRhyddle";
 import InputButtons from "./InputButtons";
+import Info from "./Info";
 
 
 function Wordle({solution}) {
@@ -21,7 +22,8 @@ function Wordle({solution}) {
 
 	return(<>
 		<InputButtons/>
-        <div>Current Guess: {currentGuess}</div>
+        <Info solution={solution}/>
+        <h3>Current Guess: {currentGuess}</h3>
 	</>);
 }
 
