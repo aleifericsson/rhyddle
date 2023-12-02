@@ -4,7 +4,7 @@ import InputButtons from "./InputButtons";
 import Info from "./Info";
 
 
-function Wordle({solution}) {
+function Rhyddle({solution}) {
     const {currentGuess, handleInput} = useRhyddle(solution);
 
     useEffect(()=>{
@@ -28,4 +28,4 @@ function Wordle({solution}) {
 }
 
 
-export default Wordle
+export default Rhyddle

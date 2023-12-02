@@ -46,12 +46,34 @@ function Guess(raw_notes){
         this.note_count += 1;
         this.notes.push({length});
     }
-    this.formatNotes = function(){
-        this.formatted_notes = this.raw_notes.map(note => {
+    this.formatNotes = function(solution){
+        this.formatted_notes = this.raw_notes.map((note,index,arr) => {
             //green: note is right length + order
             //yellow: note length exists in rhythm somewhere, grey if e.g. 4 quavers are put when there are only 3
             //grey: note length does not exist in it
-            return {length:note.length,colour:""}
+
+            const sol_note_len = solution.notes.filter(e => e.length === note).length
+            let colour;
+            if (solution.notes[index].length === note){
+                colour = "green";
+            }
+            else if (sol_note_len > 0) {
+                if (sol_note_len < raw_notes.filter(e => e === note).length){
+                    if(raw_notes.lastIndexOf(note)===index){
+                        colour = "grey";
+                    }
+                    else{
+                        colour="yellow";
+                    }
+                }
+                else{
+                    colour = "yellow";
+                }
+            }
+            else{
+                colour = "grey";
+            }
+            return {length:note,colour}
         });
 
     }

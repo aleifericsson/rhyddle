@@ -18,7 +18,7 @@ const useRhyddle = (solution) => {
         console.log(history);
         temp = guesses;
         const guess = new Guess(currentGuess);
-        //guess.formatGuess;
+        guess.formatNotes(solution);
         temp.push(guess);
         setGuesses(temp);
         console.log(guesses);
