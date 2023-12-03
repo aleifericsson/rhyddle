@@ -21,6 +21,7 @@ function Solution(name,year,artist,genre,desc,bPM){
     this.genre = genre; //e.g. VGM, electronic
     this.desc = desc; //e.g. bass of chorus, melody of first verse
     this.notes = [];
+    this.simple_notes = [];
     this.note_count=0;
     this.bPM=bPM;
     this.addNote = function(length,pitch){//notes in rhyths have pitch, notes in guess do not
@@ -32,6 +33,9 @@ function Solution(name,year,artist,genre,desc,bPM){
             this.note_count += 1;
             this.notes.push({length:note_arr[i],pitch:pitches[i]})
         }
+    }
+    this.simplifyNotes = function(){
+        this.simple_notes = this.notes.map(note => note.length);
     }
     this.playSolution = function(){//plays with pitch
 
@@ -47,34 +51,32 @@ function Guess(raw_notes){
         this.notes.push({length});
     }
     this.formatNotes = function(solution){
-        this.formatted_notes = this.raw_notes.map((note,index,arr) => {
-            //green: note is right length + order
+        //green: note is right length + order
             //yellow: note length exists in rhythm somewhere, grey if e.g. 4 quavers are put when there are only 3
             //grey: note length does not exist in it
-
-            const sol_note_len = solution.notes.filter(e => e.length === note).length
-            let colour;
-            if (solution.notes[index].length === note){
-                colour = "green";
+        solution.simplifyNotes();
+        const sol_notes = solution.simple_notes;
+        this.formatted_notes = this.raw_notes.map((note) => {
+            return {length:note,colour:"grey"}
+        });
+        this.formatted_notes.forEach((note,index)=>{
+            if (note.length===sol_notes[index]){
+                this.formatted_notes[index].colour = "green"
             }
-            else if (sol_note_len > 0) {
-                if (sol_note_len < raw_notes.filter(e => e === note).length){
-                    if(raw_notes.lastIndexOf(note)===index){
-                        colour = "grey";
+        })
+        this.formatted_notes.forEach((note,index)=>{
+            const sol_note_len = sol_notes.filter(e => e === note.length).length;
+            if(sol_note_len > 0){
+                if(this.formatted_notes[index].colour !== "green"){
+                    if(sol_note_len === this.formatted_notes.filter(e => e.length === note.length && (e.colour === "yellow" || e.colour === "green")).length){
+                        this.formatted_notes[index].colour = "grey";
                     }
                     else{
-                        colour="yellow";
+                        this.formatted_notes[index].colour = "yellow";
                     }
                 }
-                else{
-                    colour = "yellow";
-                }
             }
-            else{
-                colour = "grey";
-            }
-            return {length:note,colour}
-        });
+        })
 
     }
     this.playGuess = function(){//plays the guess with claps ig

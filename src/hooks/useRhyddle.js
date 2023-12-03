@@ -22,7 +22,17 @@ const useRhyddle = (solution) => {
         temp.push(guess);
         setGuesses(temp);
         console.log(guesses);
-        setCurrentGuess([]);
+        checkGuess();
+    }
+
+    const checkGuess = () => {
+        solution.simplifyNotes();
+        if (currentGuess === solution.simple_notes){
+            setIsCorrect(true);
+        }
+        else{
+            setCurrentGuess([]);
+        }
     }
 
     const handleInput = (e) => {
