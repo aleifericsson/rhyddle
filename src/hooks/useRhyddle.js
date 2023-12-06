@@ -27,8 +27,10 @@ const useRhyddle = (solution) => {
 
     const checkGuess = () => {
         solution.simplifyNotes();
-        if (currentGuess === solution.simple_notes){
+        console.log(solution.simple_notes)
+        if (currentGuess == solution.simple_notes){
             setIsCorrect(true);
+            console.log("finish");
         }
         else{
             setCurrentGuess([]);
@@ -57,18 +59,13 @@ const useRhyddle = (solution) => {
                 console.log("doesn't add up to 2 bars");
                 return;
             }
-            addGuess();        
+            addGuess();      
         } else{
             let temp = currentGuess;
             temp.push(e.target.id)
             setCurrentGuess(temp);
             console.log(currentGuess);
         }
-    }
-
-    //could be from pressing enter/pressing ui
-    const handleSubmit = () => {
-
     }
 
     const handleHints = () => {

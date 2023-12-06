@@ -9,7 +9,7 @@ const generateSolution = (info,lengths,pitches)=> {
 }
 
 generateSolution(["MEGALOVANIA", 2016, "Toby Fox","VGM, Electronic", "Melody of opening", 240]
-    ,["0.5","0.5","1","1","0.5r","0.5","0.5r","0.5","0.5r","1","0.5","0.5","0.5","0.5"]
+    ,["0.5","0.5","1","1","0.5r","0.5","0.5r","0.5","0.5r","1","0.5","0.5","0.5"]
     ,["d4","d4","d5","a4","r","g#4","r", "g4", "r","f4","d4","f4","g4"])
 
 

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useRhyddle } from "../hooks/useRhyddle";
 import InputButtons from "./InputButtons";
 import Info from "./Info";
+import Bars from "./Bars";
 
 
 function Rhyddle({solution}) {
@@ -15,15 +16,16 @@ function Rhyddle({solution}) {
 
         return() => {
             NRButtons.forEach(button => {
-                button.addEventListener("click", handleInput);
+                button.removeEventListener("click", handleInput);
             })
         }
     }, [handleInput])
 
 	return(<>
-		<InputButtons/>
+        <h3>Rhyddle</h3>
+        <Bars/>
         <Info solution={solution}/>
-        <h3>Current Guess: {currentGuess}</h3>
+		<InputButtons/>
 	</>);
 }
 

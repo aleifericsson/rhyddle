@@ -7,4 +7,4 @@ function Info({solution}) {
 }
 
 
-export default Info
+export default Info;

@@ -6,7 +6,7 @@ function NRButton(length,type){
     this.highlighted = false;
 
     this.generateButton = () => {
-        return(<button key = {this.name} className="NRButton" id={this.name}>{this.name}</button>)
+        return(<button type="button" key = {this.name} className="NRButton" id={this.name}>{this.name}</button>)
     }
 }
 

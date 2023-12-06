@@ -8,8 +8,8 @@ function InputButtons() {
     {restButtons.map(rest => {
         return (rest.generateButton())
     })}
-    <button key = "backspace" className="NRButton" id="backspace">backspace</button>
-    <button key = "enter" className="NRButton" id="enter">enter</button>
+    <button type="button" key = "backspace" className="NRButton" id="backspace">backspace</button>
+    <button type="button" key = "enter" className="NRButton" id="enter">enter</button>
     </>);
 }
 

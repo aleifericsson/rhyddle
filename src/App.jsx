@@ -1,4 +1,4 @@
-import Rhyddle from "./components/Wordle";
+import Rhyddle from "./components/Rhyddle";
 import { randomSolution } from "./scripts/solutions";
 import { useState } from "react";
 
