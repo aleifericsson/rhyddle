@@ -1,12 +1,15 @@
-const note_list=[
-    {length:"2",shape:(<><div className="head unfilled"></div><div className="stem"></div></>)},
-    {length:"1",shape:(<><div className="head"></div><div className="stem"></div></>)},
-]
+import NoteEle from "../scripts/note_ele";
 
-function Note({note_length, placement}) {
-    const percent = ((placement/16)*100).toString()+"px";
-    const note = note_list.filter(note => {return note.length === note_length});
-	return(note[0].shape);
+function Note({note_length, placement, bar}) {
+    let left;
+    if (bar == 1){
+        left = ((placement/16)*380+10).toString()+"px";
+    }
+    else{
+        left = ((placement/16)*380+410).toString()+"px";
+    }
+    const note = new NoteEle(note_length,left)
+	return(note.html);
 }
 
 

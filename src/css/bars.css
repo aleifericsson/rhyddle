@@ -3,7 +3,7 @@
     background-color: black;
     width:800px;
     position:relative;
-    top:80%;
+    top:70%;
 }
 
 .bar-container{
@@ -16,12 +16,11 @@
     background-color: black;
     border-radius: 50%;
     top:75%;
-    left:5%;
-    transform: rotate(340deg) translate(0,-50%);
+    transform: rotate(340deg) translate(0,31px);
     position:relative;
 }
 
-.head,.unfilled{
+.head.unfilled{
     background-color: transparent;
     box-shadow:0px 0px 0px 2px black inset;
 }
@@ -30,7 +29,29 @@
     height:35px;
     width:1px;
     background: black;
-    left:5%;
-    transform: translate(12px,-8px);
+    transform: translate(24.5px,-12px);
     position: relative;
+}
+.vert-bar{
+    height:25px;
+    width:1px;
+    background: black;
+    transform: translate(0,21px);
+    position: absolute;
+}
+
+.mid{
+    left: 400px;
+}
+
+.end1{
+    left: 807px;
+}
+
+.end2{
+    left: 802px;
+}
+
+.note-container{
+    position:absolute;
 }
