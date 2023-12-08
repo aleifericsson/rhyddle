@@ -8,6 +8,11 @@
 
 .bar-container{
     height:50px;
+    margin: 5px;
+}
+
+.guess-container{
+    padding:5px;
 }
 
 .head {
@@ -20,9 +25,33 @@
     position:relative;
 }
 
+.dot {
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    border-radius: 50%;
+    transform: translate(28px,-18px);
+    position:relative;
+}
+
 .head.unfilled{
     background-color: transparent;
     box-shadow:0px 0px 0px 2px black inset;
+}
+
+.tail{
+    width: 35px;
+    height: 10px;
+    border: solid 2px #000;
+    border-color: transparent transparent #000 transparent;
+    border-radius: 0 0 10px 100%;
+    transform: translate(8px, -38px) rotate(-115deg);
+}
+
+.tail.second{
+    width: 30px;
+    height: 10px;
+    transform: translate(10px, -44px) rotate(-115deg);
 }
 
 .stem{
@@ -41,17 +70,24 @@
 }
 
 .mid{
-    left: 400px;
+    left: 405px;
 }
 
 .end1{
-    left: 807px;
+    left: 817px;
 }
 
 .end2{
-    left: 802px;
+    left: 812px;
 }
 
 .note-container{
     position:absolute;
+}
+
+.block{
+    height:5px;
+    width:15px;
+    background-color: black;
+    transform: translate(15px,28px);
 }

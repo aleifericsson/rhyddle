@@ -6,7 +6,7 @@ function Note({note_length, placement, bar}) {
         left = ((placement/16)*380+10).toString()+"px";
     }
     else{
-        left = ((placement/16)*380+410).toString()+"px";
+        left = ((placement/16)*380+415).toString()+"px";
     }
     const note = new NoteEle(note_length,left)
 	return(note.html);
