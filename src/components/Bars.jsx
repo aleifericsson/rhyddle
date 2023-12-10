@@ -3,6 +3,7 @@ import Note from "./Note";
 
 function Bars() {
 	return(<>
+        <Bar current={false}></Bar>
         <Bar current={true}></Bar>
 	</>);
 }
@@ -20,6 +21,10 @@ function Bar({current}){
                     <Note note_length="1.5" placement={4} bar={2}/>
                     <Note note_length="2r" placement={5} bar={2}/>
                     <Note note_length="0.5" placement={6} bar={2}/>
+                    <Note note_length="1.5r" placement={7} bar={2}/>
+                    <Note note_length="1r" placement={8} bar={2}/>
+                    <Note note_length="0.5r" placement={9} bar={2}/>
+                    <Note note_length="0.25r" placement={10} bar={2}/>
                     <div className = "vert-bar start"></div>
                     <div className = "vert-bar mid"></div>
                     <div className = "vert-bar end1"></div>

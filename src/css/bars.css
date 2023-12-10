@@ -42,16 +42,16 @@
 .tail{
     width: 35px;
     height: 10px;
-    border: solid 2px #000;
+    border: solid 1px #000;
     border-color: transparent transparent #000 transparent;
     border-radius: 0 0 10px 100%;
-    transform: translate(8px, -38px) rotate(-115deg);
+    transform: translate(9px, -36px) rotate(-110deg);
 }
 
 .tail.second{
     width: 30px;
     height: 10px;
-    transform: translate(10px, -44px) rotate(-115deg);
+    transform: translate(10px, -41px) rotate(-110deg);
 }
 
 .stem{

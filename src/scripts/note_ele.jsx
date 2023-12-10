@@ -1,3 +1,7 @@
+import CrotchetR from "../assets/crotchet_rest.svg?react";
+import QuaverR from "../assets/quaver_rest.svg?react";
+import SemiQR from "../assets/semiquaver_rest.svg?react";
+
 function NoteEle(length, left)
 {   
     this.length = length;
@@ -23,12 +27,16 @@ function NoteEle(length, left)
             this.html = (<div className="note-container" style={{left}}><div className="block" ></div></div>);
             break;
         case "1.5r":
+            this.html=(<div className="note-container" style={{left, transform:"translate(0,14px)"}}><CrotchetR /><div className="dot"></div></div>)
             break;
         case "1r":
+            this.html=(<div className="note-container" style={{left, transform:"translate(0,14px)"}}><CrotchetR /></div>)
             break;
         case "0.5r":
+            this.html=(<div className="note-container" style={{left, transform:"translate(0,12px)"}}><QuaverR /></div>)
             break;
         case "0.25r":
+            this.html=(<div className="note-container" style={{left, transform:"translate(0,8px)"}}><SemiQR /></div>)
             break;
         default:
             break;
