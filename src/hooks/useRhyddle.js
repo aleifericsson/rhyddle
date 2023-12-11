@@ -38,14 +38,14 @@ const useRhyddle = (solution) => {
     }
 
     const handleInput = (e) => {
-        if (e.target.id ==="backspace")
+        if (e.currentTarget.id ==="backspace")
         {
             let temp = currentGuess;
-            temp.pop(e.target.id)
+            temp.pop(e.currentTarget.id);
             setCurrentGuess(temp);
             console.log(currentGuess);
         }
-        else if (e.target.id === "enter"){
+        else if (e.currentTarget.id === "enter"){
             if(history.length > 9){
                 console.log("too many guesses")
                 return;
@@ -62,7 +62,7 @@ const useRhyddle = (solution) => {
             addGuess();      
         } else{
             let temp = currentGuess;
-            temp.push(e.target.id)
+            temp.push(e.currentTarget.id);
             setCurrentGuess(temp);
             console.log(currentGuess);
         }

@@ -91,3 +91,8 @@
     background-color: black;
     transform: translate(15px,28px);
 }
+
+.dot.weird{
+    top:18px;
+    left:-27px;
+}

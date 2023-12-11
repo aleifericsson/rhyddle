@@ -18,6 +18,7 @@ function Bar({current}){
                     <Note note_length="0.5" placement={3} bar={1}/>
                     <Note note_length="0.25" placement={4} bar={1}/>
                     <Note note_length="1.5" placement={5} bar={1}/>
+                    <Note note_length="0.75" placement={12} bar={1}/>
                     <Note note_length="1.5" placement={4} bar={2}/>
                     <Note note_length="2r" placement={5} bar={2}/>
                     <Note note_length="0.5" placement={6} bar={2}/>
@@ -25,6 +26,7 @@ function Bar({current}){
                     <Note note_length="1r" placement={8} bar={2}/>
                     <Note note_length="0.5r" placement={9} bar={2}/>
                     <Note note_length="0.25r" placement={10} bar={2}/>
+                    <Note note_length="0.75r" placement={11} bar={2}/>
                     <div className = "vert-bar start"></div>
                     <div className = "vert-bar mid"></div>
                     <div className = "vert-bar end1"></div>

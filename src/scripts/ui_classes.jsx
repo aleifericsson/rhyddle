@@ -1,3 +1,5 @@
+import NoteEle from "./note_ele";
+
 function NRButton(length,type){
     this.length = length; //string
     this.type = type; // either note or rest
@@ -6,7 +8,8 @@ function NRButton(length,type){
     this.highlighted = false;
 
     this.generateButton = () => {
-        return(<button type="button" key = {this.name} className="NRButton" id={this.name}>{this.name}</button>)
+        const note = new NoteEle(this.name,"0px")
+        return(<button type="button" key = {this.name} className="NRButton" id={this.name}>{note.html}</button>)
     }
 }
 

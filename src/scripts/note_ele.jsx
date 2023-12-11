@@ -17,6 +17,9 @@ function NoteEle(length, left)
         case "1":
             this.html = (<div className="note-container" style={{left}}><div className="head" ></div><div className="stem" ></div></div>);
             break;
+        case "0.75":
+            this.html = (<div className="note-container" style={{left}}><div className="head" ></div><div className="stem" ></div><div className="tail" ><div className="dot weird" ></div></div></div>);
+            break;
         case "0.5":
             this.html = (<div className="note-container" style={{left}}><div className="head" ></div><div className="stem" ></div><div className="tail" ></div></div>);
             break;
@@ -24,19 +27,22 @@ function NoteEle(length, left)
             this.html = (<div className="note-container" style={{left}}><div className="head" ></div><div className="stem"></div><div className="tail" ></div><div className="tail second" ></div></div>);
             break;
         case "2r":
-            this.html = (<div className="note-container" style={{left}}><div className="block" ></div></div>);
+            this.html = (<div className="note-container rest" style={{left}}><div className="block" ></div></div>);
             break;
         case "1.5r":
-            this.html=(<div className="note-container" style={{left, transform:"translate(0,14px)"}}><CrotchetR /><div className="dot"></div></div>)
+            this.html=(<div className="note-container rest" style={{left, transform:"translate(0,14px)"}}><CrotchetR /><div className="dot"></div></div>)
             break;
         case "1r":
-            this.html=(<div className="note-container" style={{left, transform:"translate(0,14px)"}}><CrotchetR /></div>)
+            this.html=(<div className="note-container rest" style={{left, transform:"translate(0,14px)"}}><CrotchetR /></div>)
+            break;
+        case "0.75r":
+            this.html=(<div className="note-container rest" style={{left, transform:"translate(0,12px)"}}><QuaverR /><div className="dot" ></div></div>)
             break;
         case "0.5r":
-            this.html=(<div className="note-container" style={{left, transform:"translate(0,12px)"}}><QuaverR /></div>)
+            this.html=(<div className="note-container rest" style={{left, transform:"translate(0,12px)"}}><QuaverR /></div>)
             break;
         case "0.25r":
-            this.html=(<div className="note-container" style={{left, transform:"translate(0,8px)"}}><SemiQR /></div>)
+            this.html=(<div className="note-container rest" style={{left, transform:"translate(0,8px)"}}><SemiQR /></div>)
             break;
         default:
             break;
