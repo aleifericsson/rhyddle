@@ -1,32 +1,39 @@
 import "../css/bars.css"
 import Note from "./Note";
+import {v4} from "uuid";
+
+const sample = ['0.5', '0.5', '1', '1', '0.5r', '0.5', '0.5r', '0.5', '0.5r', '1', '0.5', '0.5', '0.5']
 
 function Bars() {
 	return(<>
-        <Bar current={false}></Bar>
-        <Bar current={true}></Bar>
+        <Bar current={true} guess={sample}></Bar>
 	</>);
 }
 
-function Bar({current}){
+function Bar({current, guess}){
+    let length_calc = [0];
+    guess.forEach(note => {
+        let leng = note;
+        if (leng.endsWith("r")){
+            leng = leng.slice(0,-1);
+        }
+        leng = parseFloat(leng/0.25);
+        length_calc.push(leng+length_calc[length_calc.length-1]);
+    });
     return((<div className = "guess-container">
                 <div className="bar-container">
                     <div className = {current ? "bar current" : "bar"}></div>
-                    <Note note_length="2" placement={0} bar={1}/>
-                    <Note note_length="1.5" placement={1} bar={1}/>
-                    <Note note_length="1" placement={2} bar={1}/>
-                    <Note note_length="0.5" placement={3} bar={1}/>
-                    <Note note_length="0.25" placement={4} bar={1}/>
-                    <Note note_length="1.5" placement={5} bar={1}/>
-                    <Note note_length="0.75" placement={12} bar={1}/>
-                    <Note note_length="1.5" placement={4} bar={2}/>
-                    <Note note_length="2r" placement={5} bar={2}/>
-                    <Note note_length="0.5" placement={6} bar={2}/>
-                    <Note note_length="1.5r" placement={7} bar={2}/>
-                    <Note note_length="1r" placement={8} bar={2}/>
-                    <Note note_length="0.5r" placement={9} bar={2}/>
-                    <Note note_length="0.25r" placement={10} bar={2}/>
-                    <Note note_length="0.75r" placement={11} bar={2}/>
+                    {guess.map((note, index)=>{
+                        let bra = 1;
+                        let place = length_calc[index]
+                        if (place > 15){
+                            bra = 2;
+                            place = place-15;
+                        }
+                        return(
+                            <Note note_length={note} placement={place} bar={bra} key={v4()}/>
+                        )
+                    })}
                     <div className = "vert-bar start"></div>
                     <div className = "vert-bar mid"></div>
                     <div className = "vert-bar end1"></div>
