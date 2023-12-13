@@ -6,29 +6,30 @@ import { Guess } from '../scripts/rhythm_schema';
 const useRhyddle = (solution) => {
     const [turn, setTurn] = useState(0) 
     const [currentGuess, setCurrentGuess] = useState([])
-    const [guesses, setGuesses] = useState([]) // array of both formatted and unformed guesses (latter to check for dupes)
-    const [history, setHistory] = useState([])//each guess is just an array and not an object here
+    const [guesses, setGuesses] = useState([...Array(10)]) // array of both formatted and unformed guesses (latter to check for dupes)
+    const [history, setHistory] = useState([...Array(10).fill([])])//each guess is just an array and not an object here
     const [isCorrect, setIsCorrect] = useState(false)
     const [hintsShowing, setHintsShowing] = useState([]) //empty, will fill up as user reveals hints
 
     const addGuess = () => {
-        let temp = history;
-        temp.push(currentGuess);
+        let temp = [...history];
+        temp[turn] = currentGuess;
         setHistory(temp);
         console.log(history);
-        temp = guesses;
+        temp = [...guesses];
         const guess = new Guess(currentGuess);
         guess.formatNotes(solution);
-        temp.push(guess);
+        temp[turn] = guess;
         setGuesses(temp);
         console.log(guesses);
+        temp = turn;
+        setTurn(temp + 1);
         checkGuess();
     }
 
     const checkGuess = () => {
         solution.simplifyNotes();
-        console.log(solution.simple_notes)
-        if (currentGuess == solution.simple_notes){
+        if (JSON.stringify(currentGuess) === JSON.stringify(solution.simple_notes)){
             setIsCorrect(true);
             console.log("finish");
         }
@@ -46,11 +47,17 @@ const useRhyddle = (solution) => {
             console.log(currentGuess);
         }
         else if (e.currentTarget.id === "enter"){
-            if(history.length > 9){
+            if(history[9].length != 0){
                 console.log("too many guesses")
                 return;
             }
-            if ( history.includes(currentGuess)){
+            let double_guess = false;
+            history.forEach(arr => {
+                if (JSON.stringify(arr) === JSON.stringify(currentGuess)){
+                    double_guess = true;
+                }
+            })
+            if (double_guess){
                 console.log("repeat guess")
                 return;
             }
@@ -79,7 +86,7 @@ const useRhyddle = (solution) => {
         */
     }
 
-    return({turn,currentGuess,guesses,isCorrect, handleInput})
+    return({turn,currentGuess,history,guesses,isCorrect, handleInput})
 }
 
 

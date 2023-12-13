@@ -6,7 +6,7 @@ import Bars from "./Bars";
 
 
 function Rhyddle({solution}) {
-    const {currentGuess, handleInput} = useRhyddle(solution);
+    const { handleInput} = useRhyddle(solution);
 
     useEffect(()=>{
         const NRButtons = document.querySelectorAll(".NRButton");
@@ -23,7 +23,7 @@ function Rhyddle({solution}) {
 
 	return(<>
         <h3>Rhyddle</h3>
-        <Bars/>
+        <Bars solution={solution}/>
         <Info solution={solution}/>
 		<InputButtons/>
 	</>);
