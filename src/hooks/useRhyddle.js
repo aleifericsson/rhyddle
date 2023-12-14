@@ -68,10 +68,12 @@ const useRhyddle = (solution) => {
             }
             addGuess();      
         } else{
-            let temp = currentGuess;
+            let temp = [...currentGuess];
             temp.push(e.currentTarget.id);
-            setCurrentGuess(temp);
-            console.log(currentGuess);
+            if(checkLength(temp) <= 8){
+                setCurrentGuess(temp);
+            }
+            
         }
     }
 

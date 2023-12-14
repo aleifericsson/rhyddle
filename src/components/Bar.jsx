@@ -1,28 +1,8 @@
-import "../css/bars.css"
-import Note from "./Note";
 import {v4} from "uuid";
-import { useRhyddle } from "../hooks/useRhyddle";
-
-const sample = ['0.5', '0.5', '1', '1', '0.5r', '0.5', '0.5r', '0.5', '0.5r', '1', '0.5', '0.5', '0.5']
-const bar_ids = [...Array(10)]
-bar_ids.forEach((ba, index)=>{bar_ids[index]=v4()})
-
-function Bars({solution}) {
-    const {currentGuess, turn, history} = useRhyddle(solution);
-    //USE GUESSES INSTEAD OF HISTORY TO ADD COLORS TO THE NOTES, RN ONLY TEMPORARY
-	return(<>
-        {history.map((arr, index) => {
-            let current = index === turn ? true : false;
-            let guess = current ? sample : arr
-
-            return(<>
-                <Bar current={current} guess={guess} key={bar_ids[index]} />
-            </>)
-        })}
-	</>);
-}
+import Note from "./Note";
 
 function Bar({current, guess}){
+    //IF CURRENT === TRUE, USE CURRENTGUESS ELSE USE FORMATTED GUESS, REMOVE NEED FOR HISTORY
     let length_calc = [0];
     guess.forEach(note => {
         let leng = note;
@@ -56,4 +36,4 @@ function Bar({current, guess}){
             </div>))
 }
 
-export default Bars;
+export {Bar};

@@ -26,7 +26,6 @@ const checkLength = (note_arr) => {
         }
         tot_len = tot_len + Number(temp);
     });
-    console.log(tot_len);
     return(tot_len);
 }
 

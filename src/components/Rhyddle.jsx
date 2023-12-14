@@ -2,11 +2,11 @@ import { useEffect } from "react";
 import { useRhyddle } from "../hooks/useRhyddle";
 import InputButtons from "./InputButtons";
 import Info from "./Info";
-import Bars from "./Bars";
+import Grid from "./Grid";
 
 
 function Rhyddle({solution}) {
-    const { handleInput} = useRhyddle(solution);
+    const { handleInput, currentGuess, turn, history} = useRhyddle(solution);
 
     useEffect(()=>{
         const NRButtons = document.querySelectorAll(".NRButton");
@@ -23,7 +23,7 @@ function Rhyddle({solution}) {
 
 	return(<>
         <h3>Rhyddle</h3>
-        <Bars solution={solution}/>
+        <Grid currentGuess={currentGuess} turn ={turn} history={history}/>
         <Info solution={solution}/>
 		<InputButtons/>
 	</>);
