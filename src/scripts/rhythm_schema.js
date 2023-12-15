@@ -44,7 +44,8 @@ function Solution(name,year,artist,genre,desc,bPM){
 
 function Guess(raw_notes){
     this.raw_notes = raw_notes;
-    this.formatted_notes = [];
+    this.formatted_notes = []; //Note Order mode
+    this.formatted_notes2 = []; //Note Placement Mode
     this.hint_guess = false; //hint guess are blocked out for hints
     this.addNote = function(length){//notes in rhyths have pitch, notes in guess do not
         this.note_count += 1;
@@ -76,6 +77,9 @@ function Guess(raw_notes){
                     }
                 }
             }
+        })
+        this.formatted_notes2 = this.raw_notes.map((note)=>{
+            return{length:note, colour:"grey"}
         })
 
     }

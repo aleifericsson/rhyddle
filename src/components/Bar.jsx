@@ -1,8 +1,9 @@
 import {v4} from "uuid";
 import Note from "./Note";
+import { useRhyddle } from "../hooks/useRhyddle";
 
-function Bar({current, guess}){
-    //IF CURRENT === TRUE, USE CURRENTGUESS ELSE USE FORMATTED GUESS, REMOVE NEED FOR HISTORY
+function Bar({current, guess, solution}){
+    const { viewMode } = useRhyddle(solution);
 
     if(current || guess.length == 0){
     let length_calc = [0];
@@ -57,7 +58,13 @@ function Bar({current, guess}){
                             bra = 2;
                             place = place-15;
                         }
-                        let colour = guess.formatted_notes[index].colour;
+                        let colour;
+                        if(viewMode === "Note Order"){
+                            colour = guess.formatted_notes[index].colour;
+                        }
+                        else{
+                            colour=guess.formatted_notes2[index].colour;
+                        }
                         if (colour =="green"){
                             colour = "rgba(0,255,0,0.3)";
                         }

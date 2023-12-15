@@ -4,18 +4,18 @@ import { Guess } from '../scripts/rhythm_schema';
 
 //useRhyddle basically separates the logic from the ui
 const useRhyddle = (solution) => {
-    const [turn, setTurn] = useState(0) 
-    const [currentGuess, setCurrentGuess] = useState([])
-    const [guesses, setGuesses] = useState([...Array(10).fill([])]) // array of both formatted and unformed guesses (latter to check for dupes)
-    const [history, setHistory] = useState([...Array(10).fill([])])//each guess is just an array and not an object here
-    const [isCorrect, setIsCorrect] = useState(false)
-    const [hintsShowing, setHintsShowing] = useState([]) //empty, will fill up as user reveals hints
+    const [turn, setTurn] = useState(0);
+    const [currentGuess, setCurrentGuess] = useState([]);
+    const [guesses, setGuesses] = useState([...Array(10).fill([])]); // array of both formatted and unformed guesses (latter to check for dupes)
+    const [history, setHistory] = useState([...Array(10).fill([])]); //each guess is just an array and not an object here
+    const [isCorrect, setIsCorrect] = useState(false);
+    const [hintsShowing, setHintsShowing] = useState([]); //empty, will fill up as user reveals hints
+    const [viewMode, setViewMode] = useState("Note Order"); //Note Order or Note Placement
 
     const addGuess = () => {
         let temp = [...history];
         temp[turn] = currentGuess;
         setHistory(temp);
-        console.log(history);
         temp = [...guesses];
         const guess = new Guess(currentGuess);
         guess.formatNotes(solution);
@@ -88,7 +88,17 @@ const useRhyddle = (solution) => {
         */
     }
 
-    return({turn,currentGuess,history,guesses,isCorrect, handleInput})
+    const toggleMode = () => {
+        let temp = viewMode;
+        if (temp === "Note Order"){
+            setViewMode("Note Placement");
+        }
+        else{
+            setViewMode("Note Order")
+        }
+    }
+
+    return({turn,currentGuess,guesses,isCorrect, viewMode, handleInput, toggleMode})
 }
 
 
