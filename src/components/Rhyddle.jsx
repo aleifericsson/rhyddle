@@ -6,7 +6,7 @@ import Grid from "./Grid";
 
 
 function Rhyddle({solution}) {
-    const { handleInput, currentGuess, turn, history} = useRhyddle(solution);
+    const { handleInput, currentGuess, turn, history, guesses} = useRhyddle(solution);
 
     useEffect(()=>{
         const NRButtons = document.querySelectorAll(".NRButton");
@@ -23,7 +23,7 @@ function Rhyddle({solution}) {
 
 	return(<>
         <h3>Rhyddle</h3>
-        <Grid currentGuess={currentGuess} turn ={turn} history={history}/>
+        <Grid currentGuess={currentGuess} turn ={turn} guesses={guesses}/>
         <Info solution={solution}/>
 		<InputButtons/>
 	</>);

@@ -1,7 +1,6 @@
 import CrotchetR from "../assets/crotchet_rest.svg?react";
 import QuaverR from "../assets/quaver_rest.svg?react";
 import SemiQR from "../assets/semiquaver_rest.svg?react";
-
 function NoteEle(length, left, key)
 {   
     this.length = length;

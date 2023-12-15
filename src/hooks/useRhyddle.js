@@ -6,7 +6,7 @@ import { Guess } from '../scripts/rhythm_schema';
 const useRhyddle = (solution) => {
     const [turn, setTurn] = useState(0) 
     const [currentGuess, setCurrentGuess] = useState([])
-    const [guesses, setGuesses] = useState([...Array(10)]) // array of both formatted and unformed guesses (latter to check for dupes)
+    const [guesses, setGuesses] = useState([...Array(10).fill([])]) // array of both formatted and unformed guesses (latter to check for dupes)
     const [history, setHistory] = useState([...Array(10).fill([])])//each guess is just an array and not an object here
     const [isCorrect, setIsCorrect] = useState(false)
     const [hintsShowing, setHintsShowing] = useState([]) //empty, will fill up as user reveals hints
@@ -41,7 +41,7 @@ const useRhyddle = (solution) => {
     const handleInput = (e) => {
         if (e.currentTarget.id ==="backspace")
         {
-            let temp = currentGuess;
+            let temp = [...currentGuess];
             temp.pop(e.currentTarget.id);
             setCurrentGuess(temp);
             console.log(currentGuess);
