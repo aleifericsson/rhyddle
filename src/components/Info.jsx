@@ -15,12 +15,13 @@ function Info({solution}) {
             }, [toggleMode])
 
 	return(<>
+        <h3>Info</h3>
         <div>Genre: {solution.genre}</div>
         <div>Description: {solution.desc}</div>
         <div>BPM: {solution.bPM}</div>
 
         <button type="button" id = "toggle-mode">Toggle Mode</button>
-        <div>Current Mode: {viewMode}</div>
+        <div>Current Mode: <span className="view-mode">{viewMode}</span> {"(will switch on next guess)"}</div>
 	</>);
 }
 

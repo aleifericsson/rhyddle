@@ -3,6 +3,7 @@ import { useRhyddle } from "../hooks/useRhyddle";
 import InputButtons from "./InputButtons";
 import Info from "./Info";
 import Grid from "./Grid";
+import Hints from "./Hints";
 
 
 function Rhyddle({solution}) {
@@ -22,11 +23,20 @@ function Rhyddle({solution}) {
     }, [handleInput])
 
 	return(<>
-        <h3>Rhyddle</h3>
-        <Grid currentGuess={currentGuess} turn ={turn} guesses={guesses} solution={solution}/>
+        <h1>Rhyddle</h1>
+        <Divider />
         <Info solution={solution}/>
+        <Divider />
+        <Hints solution={solution}/>
+        <Divider />
+        <Grid currentGuess={currentGuess} turn ={turn} guesses={guesses} solution={solution}/>        
+        <Divider />
 		<InputButtons/>
 	</>);
+}
+
+function Divider(){
+    return(<div>{Array(170).fill("-").join('')}</div>)
 }
 
 

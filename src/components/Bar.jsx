@@ -59,7 +59,8 @@ function Bar({current, guess, solution}){
                             place = place-15;
                         }
                         let colour;
-                        if(viewMode === "Note Order"){
+                        const temp = document.querySelector(".view-mode");
+                        if(temp.innerHTML === "Note Order"){
                             colour = guess.formatted_notes[index].colour;
                         }
                         else{

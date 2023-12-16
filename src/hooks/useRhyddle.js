@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { checkLength } from '../scripts/solutions';
 import { Guess } from '../scripts/rhythm_schema';
+import { hint_list } from '../scripts/hint_classes';
 
 //useRhyddle basically separates the logic from the ui
 const useRhyddle = (solution) => {
@@ -9,7 +10,7 @@ const useRhyddle = (solution) => {
     const [guesses, setGuesses] = useState([...Array(10).fill([])]); // array of both formatted and unformed guesses (latter to check for dupes)
     const [history, setHistory] = useState([...Array(10).fill([])]); //each guess is just an array and not an object here
     const [isCorrect, setIsCorrect] = useState(false);
-    const [hintsShowing, setHintsShowing] = useState([]); //empty, will fill up as user reveals hints
+    const [hintList, setHintList] = useState(hint_list); //empty, will fill up as user reveals hints
     const [viewMode, setViewMode] = useState("Note Order"); //Note Order or Note Placement
 
     const addGuess = () => {
@@ -33,9 +34,7 @@ const useRhyddle = (solution) => {
             setIsCorrect(true);
             console.log("finish");
         }
-        else{
-            setCurrentGuess([]);
-        }
+        setCurrentGuess([]);
     }
 
     const handleInput = (e) => {
@@ -98,7 +97,7 @@ const useRhyddle = (solution) => {
         }
     }
 
-    return({turn,currentGuess,guesses,isCorrect, viewMode, handleInput, toggleMode})
+    return({turn,currentGuess,guesses,isCorrect, viewMode, handleInput, toggleMode, handleHints, hintList})
 }
 
 
