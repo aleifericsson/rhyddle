@@ -87,8 +87,9 @@ function Guess(raw_notes){
 
     }
     this.setHintGuess = function(){
-        this.raw_notes = [];
-        this.formatted_notes = "X"; //triggers something so that the ui would show something different
+        this.raw_notes = Array(16).fill("x");
+        this.formatted_notes = Array(16).fill({length:"x",colour:"x"}); //triggers something so that the ui would show something different
+        this.formatted_notes2 = Array(16).fill({length:"x",colour:"x"});
         this.hint_guess = true;
     }
 }

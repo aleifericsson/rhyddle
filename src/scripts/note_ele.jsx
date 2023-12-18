@@ -43,6 +43,8 @@ function NoteEle(length, left, key)
         case "0.25r":
             this.html=(<div className="note-container rest" key={key} style={{left, transform:"translate(0,8px)"}}><SemiQR /></div>)
             break;
+        case "x":
+            this.html=(<div className="note-container blank"><div className="x"></div><div className="x part-2"></div></div>)
         default:
             break;
     }

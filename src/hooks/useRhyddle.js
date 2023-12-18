@@ -76,7 +76,7 @@ const useRhyddle = (solution) => {
         }
     }
 
-    const handleHints = () => {
+    const handleHints = (e) => {
         /* Hints: (across 10 guesses)
             Reveal genre and description: FREE, always showing
             Reveal artist & year: 1 hint;
@@ -85,6 +85,31 @@ const useRhyddle = (solution) => {
             Reveal which notes are included: 1 hint;
             Last chance: leaves you with one guess left to transcribe the melody
         */
+        console.log(e.currentTarget.id);
+        let temp = [...hintList];
+        let hint = temp.find(hint => hint.name === e.currentTarget.id)
+        let index = temp.indexOf(hint);
+        if (hint.showing === false) //ensures only pressed once
+        {
+            console.log(hint.name);
+            temp[index].showing = true
+            //if name == something do something extra
+        }
+        setHintList(temp);
+        for(let i=0; i<hint.cost; i++){
+            let temp2 = turn;
+            let temp3 = [...guesses];
+            temp3[turn] = new Guess([]);
+            temp3[turn].setHintGuess();
+            setGuesses(temp3);
+            console.log(guesses);
+            temp3 = [...history];
+            temp3[turn] = Array(16).fill("x");
+            setHistory(temp3);
+            console.log(history);
+            setTurn(temp2 + 1);
+            setCurrentGuess([]);
+        }
     }
 
     const toggleMode = () => {

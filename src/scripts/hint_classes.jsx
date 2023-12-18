@@ -4,16 +4,8 @@ function Hint(name,cost){
     this.cost = cost;
     this.getButton = () => {
         return(
-            <button className="hint-button" onClick={this.clickFunc}>{this.name}</button>
+            <button className="hint-button" id={this.name} >{this.name}</button>
         )
-    }
-    this.clickFunc = () =>{
-        if (this.showing === false) //ensures only pressed once
-        {
-            console.log(this.name);
-            this.showing = true
-            //if name == something do something extra
-        }
     }
     this.getInfo = () => {
         return(
@@ -22,6 +14,6 @@ function Hint(name,cost){
     }
 }
 
-const hint_list = [new Hint("test",1)];
+const hint_list = [new Hint("hint-test",1)];
 
 export {Hint, hint_list};
