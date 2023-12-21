@@ -15,7 +15,7 @@ function Hints({solution}) {
             const but = document.getElementById(hint.name);
             but.removeEventListener("click", handleHints);
         })
-    }}, [hintList]);
+    }}, [hintList, handleHints]);
 
 	return(<>
         <h3>Shop</h3>

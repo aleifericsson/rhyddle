@@ -52,6 +52,11 @@ function Guess(raw_notes){
         this.notes.push({length});
     }
     this.formatNotes = function(solution){
+        if (this.raw_notes[0] === "x"){
+            this.formatted_notes = Array(16).fill({length:"x",colour:"x"}); //triggers something so that the ui would show something different
+            this.formatted_notes2 = Array(16).fill({length:"x",colour:"x"});
+            this.hint_guess = true;
+        }
         //green: note is right length + order
             //yellow: note length exists in rhythm somewhere, grey if e.g. 4 quavers are put when there are only 3
             //grey: note length does not exist in it

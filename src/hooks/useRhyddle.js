@@ -13,16 +13,36 @@ const useRhyddle = (solution) => {
     const [hintList, setHintList] = useState(hint_list); //empty, will fill up as user reveals hints
     const [viewMode, setViewMode] = useState("Note Order"); //Note Order or Note Placement
 
-    const addGuess = () => {
-        let temp = [...history];
-        temp[turn] = currentGuess;
-        setHistory(temp);
-        temp = [...guesses];
-        const guess = new Guess(currentGuess);
-        guess.formatNotes(solution);
-        temp[turn] = guess;
-        setGuesses(temp);
-        console.log(guesses);
+    const addGuess = (curGues = []) => {
+        let temp;
+        if (curGues.length != 0){
+            temp = [...history];
+            temp[turn] = curGues;
+            console.log(temp);
+            setHistory(temp);
+            console.log(history);
+            temp = [...guesses];
+            const guess = new Guess(curGues);
+            guess.formatNotes(solution);
+            temp[turn] = guess;
+            console.log(temp);
+            setGuesses(temp);
+            console.log(guesses);
+        }
+        else{
+            temp = [...history];
+            temp[turn] = currentGuess;
+            console.log(temp);
+            setHistory(temp);
+            console.log(history);
+            temp = [...guesses];
+            const guess = new Guess(currentGuess);
+            guess.formatNotes(solution);
+            temp[turn] = guess;
+            console.log(temp);
+            setGuesses(temp);
+            console.log(guesses);
+        }
         temp = turn;
         setTurn(temp + 1);
         checkGuess();
@@ -85,7 +105,6 @@ const useRhyddle = (solution) => {
             Reveal which notes are included: 1 hint;
             Last chance: leaves you with one guess left to transcribe the melody
         */
-        console.log(e.currentTarget.id);
         let temp = [...hintList];
         let hint = temp.find(hint => hint.name === e.currentTarget.id)
         let index = temp.indexOf(hint);
@@ -93,22 +112,12 @@ const useRhyddle = (solution) => {
         {
             console.log(hint.name);
             temp[index].showing = true
+            setHintList(temp);
+            console.log(hintList)
+            for(let i=0; i<hint.cost; i++){
+                addGuess(Array(16).fill("x"));
+            }
             //if name == something do something extra
-        }
-        setHintList(temp);
-        for(let i=0; i<hint.cost; i++){
-            let temp2 = turn;
-            let temp3 = [...guesses];
-            temp3[turn] = new Guess([]);
-            temp3[turn].setHintGuess();
-            setGuesses(temp3);
-            console.log(guesses);
-            temp3 = [...history];
-            temp3[turn] = Array(16).fill("x");
-            setHistory(temp3);
-            console.log(history);
-            setTurn(temp2 + 1);
-            setCurrentGuess([]);
         }
     }
 
