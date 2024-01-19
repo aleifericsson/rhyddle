@@ -1,4 +1,4 @@
-# Footcard Renderer
+# Rhyddle
 Guess today's melody by pressing the note buttons and seeing how it compares to the answer wordle style! Grey means that that note is not in the melody, yellow means that it is but in a different position and green means that it's in the right position! Trade your unused guesses for hints, and listen to your guesses in real time to get a feel for what they sound like!
 
 To view the page, click [here](https://aleifericsson.github.io/rhyddle/).
