@@ -34,8 +34,7 @@ function Bar({current, guess, solution}){
                     <div className = "vert-bar end1"></div>
                     <div className = "vert-bar end2"></div>
                 </div>
-                <button type="button" key = "play" className="guess-button" id="play">play guess</button>
-                <div>{current ? "current" : "not current"}</div>
+                <div>{current ? "current guess" : "not current guess"}</div>
             </div>))
     }
     else{

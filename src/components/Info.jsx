@@ -15,7 +15,7 @@ function Info({solution}) {
             }, [toggleMode])
 
 	return(<>
-        <h3>Info</h3>
+        <h3>Song Info</h3>
         <div>Genre: {solution.genre}</div>
         <div>Description: {solution.desc}</div>
         <div>BPM: {solution.bPM}</div>
